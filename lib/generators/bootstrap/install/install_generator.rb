@@ -8,7 +8,7 @@ module Bootstrap
 
       class_option :template_engine
       class_option :stylesheet_engine
-      class_option :skip_turbolinks, type: :boolean, default: false, desc: "Skip Turbolinks on assets"
+      class_option :skip_turbolinks, :type=> :boolean, :default=> false, :desc=> "Skip Turbolinks on assets"
 
       def copy_lib
         directory "lib/templates/#{options[:template_engine]}"
@@ -36,7 +36,7 @@ module Bootstrap
         application_js_path = 'app/assets/javascripts/application.js'
 
         if ::File.exists?(::File.join(destination_root, application_js_path))
-          inject_into_file application_js_path, before: '//= require_tree' do
+          inject_into_file application_js_path, :before=> '//= require_tree' do
             "//= require bootstrap\n"
           end
         end
